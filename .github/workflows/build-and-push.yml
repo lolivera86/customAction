@@ -9,7 +9,7 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: lolivera86/customAction
+  IMAGE_NAME: lolivera86/customaction
   IMAGE_TAG: 1.0.${{ github.run_number }}
 
 jobs:
