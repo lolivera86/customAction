@@ -1,6 +1,6 @@
 name: 'Get & cache dependecies'
 description: 'Get dependecies (via NPM) and cache them.'
-imputs: 
+inputs: 
   caching:
    description: 'cache depencies or not'
    required: false
