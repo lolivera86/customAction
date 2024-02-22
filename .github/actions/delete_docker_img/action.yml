@@ -11,7 +11,9 @@ on:
       dry-run:
         description: 'Dry run (true/false)'
         required: true
-
+      github-token:
+        description: 'GH_TOKEN to use GitHub API'
+        required: true
 jobs:
   prune:
     runs-on: ubuntu-22.04
@@ -27,6 +29,6 @@ jobs:
         run: pip install requests
       - name: Prune untagged images
         env:
-          GHCR_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GHCR_TOKEN: ${{ inputs.github-token }}
         run: |
           python ghcr-prune.py
