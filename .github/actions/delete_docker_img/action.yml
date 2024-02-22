@@ -25,7 +25,7 @@ runs:
         python-version: '3.12'
         cache: 'pip'
         cache-dependency-path: |
-          .github/workflows/prune_images.yaml
+          .github/workflows/action.yaml
     - name: Install requests
       run: pip install requests
     - name: Prune untagged images
@@ -33,3 +33,4 @@ runs:
         GHCR_TOKEN: ${{ inputs.github-token }}
       run: |
         python ghcr-prune.py
+      shell: bash  
