@@ -6,6 +6,7 @@ inputs:
     required: true
   prune-age:
     description: 'Prune age in hours'
+    default: 1
     required: true
   dry-run:
     description: 'Dry run (true/false)'
