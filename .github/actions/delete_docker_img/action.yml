@@ -28,15 +28,20 @@ runs:
         echo "Prune Age: ${{ inputs.prune-age }}"
         echo "Dry Run: ${{ inputs.dry-run }}"
         echo "GitHub Token: ${{ inputs.github-token }}"
-    # - uses: actions/setup-python@v5
-    #   with:
-    #     python-version: '3.12'
-    #     cache: 'pip'
+    - uses: actions/setup-python@v5
+      with:
+        python-version: '3.12'
+        cache: 'pip'
 
-    # - name: Install requests
-    #   shell: bash
-    #   run: pip install requests
-    # - name: Prune untagged images
-    #   shell: bash
-    #   run: python .github/actions/delete_docker_img/ghcr-prune.py
+    - name: Install requests
+      shell: bash
+      run: pip install requests
+    - name: Prune untagged images
+      shell: bash
+      env:
+        INPUT_PRUNE-AGE: ${{ inputs.prune-age }}
+        INPUT_CONTAINER: ${{ inputs.container }}"
+        INPUT_DRY-RUN: ${{ inputs.dry-run }}"
+        INPUT_GITHUB-TOKEN: ${{ inputs.github-token }
+      run: python .github/actions/delete_docker_img/ghcr-prune.py
        
