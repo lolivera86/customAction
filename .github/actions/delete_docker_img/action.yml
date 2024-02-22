@@ -30,7 +30,5 @@ runs:
       run: pip install requests
     - name: Prune untagged images
       shell: bash
-      env:
-        GHCR_TOKEN: ${{ inputs.github-token }}
       run: python .github/actions/delete_docker_img/ghcr-prune.py
        

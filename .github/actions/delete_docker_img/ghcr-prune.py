@@ -18,11 +18,9 @@ if __name__ == "__main__":
     container = os.environ['INPUT_CONTAINER'];
     prune_age = os.environ['INPUT_PRUNE-AGE'];
     dry_run = os.environ['INPUT_DRY-RUN'];
-
+    token = os.environ['INPUT_GITHUB-TOKEN'];
     
-    if 'GHCR_TOKEN' in os.environ:
-        token = os.environ['GHCR_TOKEN']
-    else:
+    if token is None:
         raise ValueError('missing authentication token')
 
     s = requests.Session()
