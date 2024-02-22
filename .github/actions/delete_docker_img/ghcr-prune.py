@@ -11,10 +11,10 @@ github_api_version = '2022-11-28'
 
 
 if __name__ == "__main__":
-    prune_age = int(os.environ['INPUT_PRUNE-AGE']);
-    container = os.environ['INPUT_CONTAINER'];
-    dry_run = os.environ['INPUT_DRY-RUN'];
-    token = os.environ['INPUT_GITHUB-TOKEN'];
+    prune_age = int(os.environ['INPUT_PRUNE-AGE'])
+    container = os.environ['INPUT_CONTAINER']
+    dry_run = os.environ['INPUT_DRY-RUN'].lower() in ['true']
+    token = os.environ['INPUT_GITHUB-TOKEN']
     
     if token is None:
         raise ValueError('missing authentication token')
@@ -40,7 +40,7 @@ if __name__ == "__main__":
             list_url = None
 
         versions = r.json()
-
+        print(r.json())
         for v in versions:
             created = datetime.fromisoformat(v['created_at'])
             metadata = v["metadata"]["container"]
