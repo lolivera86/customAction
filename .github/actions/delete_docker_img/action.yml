@@ -22,6 +22,7 @@ runs:
     - uses: actions/checkout@v4
 
     - name: Print Inputs
+      shell: bash
       run: |
         echo "Container: ${{ inputs.container }}"
         echo "Prune Age: ${{ inputs.prune-age }}"
