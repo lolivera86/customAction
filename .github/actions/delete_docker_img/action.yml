@@ -1,7 +1,7 @@
 name: Prune untagged images
 inputs:
   container: customaction
-  prune-age: 15
+  prune-age: 1
   dry-run: true
 on:
   workflow_dispatch:
