@@ -49,5 +49,5 @@ jobs:
         with:
           container: ${{ env.IMAGE_NAME }}
           prune-age: 1
-          dry-run: true
+          dry-run: false
           github-token: ${{ secrets.GITHUB_TOKEN }}
