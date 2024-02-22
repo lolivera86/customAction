@@ -37,12 +37,12 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      # - name: Build and push Docker image
-      #   uses: docker/build-push-action@v5
-      #   with:
-      #     context: .
-      #     push: true
-      #     tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: true
+          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
 
       - name: delete old images
         uses: ./.github/actions/delete_docker_img
@@ -50,3 +50,4 @@ jobs:
           container: ${{ env.IMAGE_NAME }}
           prune-age: 1
           dry-run: true
+          github-token: ${{ secrets.GITHUB_TOKEN }}
