@@ -17,7 +17,7 @@ if __name__ == "__main__":
         
     container = os.environ['INPUT_CONTAINER'];
     prune_age = os.environ['INPUT_PRUNE-AGE'];
-    dry_run = os.environ['INPUT_DRY_RUN'];
+    dry_run = os.environ['INPUT_DRY-RUN'];
 
     
     if 'GHCR_TOKEN' in os.environ:
