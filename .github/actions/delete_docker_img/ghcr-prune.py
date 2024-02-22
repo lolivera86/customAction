@@ -11,7 +11,7 @@ github_api_version = '2022-11-28'
 
 
 if __name__ == "__main__":
-    prune_age = os.environ['INPUT_PRUNE-AGE'];
+    prune_age = int(os.environ['INPUT_PRUNE-AGE']);
     container = os.environ['INPUT_CONTAINER'];
     dry_run = os.environ['INPUT_DRY-RUN'];
     token = os.environ['INPUT_GITHUB-TOKEN'];
