@@ -1,7 +1,4 @@
 #!/usr/bin/python3
-# PYTHON_ARGCOMPLETE_OK
-import argparse
-import getpass
 import os
 import requests
 from datetime import datetime, timedelta
@@ -14,12 +11,8 @@ github_api_version = '2022-11-28'
 
 
 if __name__ == "__main__":
-    print(f'Container: {os.environ["INPUT_CONTAINER"]}')
-    print(f'Prune Age: {os.environ["INPUT_PRUNE-AGE"]}')
-    print(f'Dry Run: {os.environ["INPUT_DRY-RUN"]}')
-    print(f'GitHub Token: {os.environ["INPUT_GITHUB-TOKEN"]}')    
-    container = os.environ['INPUT_CONTAINER'];
     prune_age = os.environ['INPUT_PRUNE-AGE'];
+    container = os.environ['INPUT_CONTAINER'];
     dry_run = os.environ['INPUT_DRY-RUN'];
     token = os.environ['INPUT_GITHUB-TOKEN'];
     
