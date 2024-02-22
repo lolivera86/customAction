@@ -33,4 +33,4 @@ runs:
         GHCR_TOKEN: ${{ inputs.github-token }}
       run: |
         python ghcr-prune.py
-      shell: bash  
+       
