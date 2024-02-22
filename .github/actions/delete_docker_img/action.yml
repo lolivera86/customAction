@@ -13,21 +13,22 @@ inputs:
   github-token:
     description: 'GH_TOKEN to use GitHub API'
     required: true
-jobs:
-  prune:
-    runs-on: ubuntu-22.04
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with:
-          python-version: '3.12'
-          cache: 'pip'
-          cache-dependency-path: |
-            .github/workflows/prune_images.yaml
-      - name: Install requests
-        run: pip install requests
-      - name: Prune untagged images
-        env:
-          GHCR_TOKEN: ${{ inputs.github-token }}
-        run: |
-          python ghcr-prune.py
+ 
+
+runs:
+  using: "composite"
+  steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-python@v5
+      with:
+        python-version: '3.12'
+        cache: 'pip'
+        cache-dependency-path: |
+          .github/workflows/prune_images.yaml
+    - name: Install requests
+      run: pip install requests
+    - name: Prune untagged images
+      env:
+        GHCR_TOKEN: ${{ inputs.github-token }}
+      run: |
+        python ghcr-prune.py
