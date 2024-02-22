@@ -32,5 +32,5 @@ runs:
       shell: bash
       env:
         GHCR_TOKEN: ${{ inputs.github-token }}
-      run: python ./actions/delete_docker_img/ghcr-prune.py
+      run: python .github/actions/delete_docker_img/ghcr-prune.py
        
