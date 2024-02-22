@@ -20,15 +20,22 @@ runs:
   using: "composite"
   steps:
     - uses: actions/checkout@v4
-    - uses: actions/setup-python@v5
-      with:
-        python-version: '3.12'
-        cache: 'pip'
 
-    - name: Install requests
-      shell: bash
-      run: pip install requests
-    - name: Prune untagged images
-      shell: bash
-      run: python .github/actions/delete_docker_img/ghcr-prune.py
+    - name: Print Inputs
+      run: |
+        echo "Container: ${{ inputs.container }}"
+        echo "Prune Age: ${{ inputs.prune-age }}"
+        echo "Dry Run: ${{ inputs.dry-run }}"
+        echo "GitHub Token: ${{ inputs.github-token }}"
+    # - uses: actions/setup-python@v5
+    #   with:
+    #     python-version: '3.12'
+    #     cache: 'pip'
+
+    # - name: Install requests
+    #   shell: bash
+    #   run: pip install requests
+    # - name: Prune untagged images
+    #   shell: bash
+    #   run: python .github/actions/delete_docker_img/ghcr-prune.py
        
