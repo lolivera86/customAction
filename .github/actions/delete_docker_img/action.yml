@@ -1,14 +1,16 @@
-name: Prune untagged images
-inputs:
-  container: customaction
-  prune-age: 1
-  dry-run: true
+name: Prune images
 on:
   workflow_dispatch:
-
-permissions:
-  contents: read
-  packages: write
+    inputs:
+      container:
+        description: 'Container name'
+        required: true
+      prune-age:
+        description: 'Prune age in hours'
+        required: true
+      dry-run:
+        description: 'Dry run (true/false)'
+        required: true
 
 jobs:
   prune:
