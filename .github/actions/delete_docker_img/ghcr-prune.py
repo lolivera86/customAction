@@ -42,7 +42,7 @@ if __name__ == "__main__":
         versions = r.json()
         print(r.json())
         for v in versions:
-            created = datetime.fromisoformat(v['created_at'])
+            created = datetime.fromisoformat(int(v['created_at']))
             metadata = v["metadata"]["container"]
             print(f'{v["id"]}\t{v["name"]}\t{created}\t{metadata["tags"]}')
 
