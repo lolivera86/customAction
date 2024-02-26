@@ -47,7 +47,7 @@ jobs:
       - name: delete old images
         uses: ./.github/actions/delete_docker_img
         with:
-          container: customaction
+          container: lolivera86/customaction
           prune-age: 1
           dry-run: false
           github-token: ${{ secrets.GITHUB_TOKEN }}
