@@ -29,8 +29,7 @@ if __name__ == "__main__":
     if del_before:
         print(f'Pruning images created before {del_before}')
 
-    list_url: str | None = 'https://api.github.com/user/packages/' \
-        f'container/{container}/versions'
+    list_url: str | None = 'https://api.github.com/user/packages/container/{container}/versions'
 
     while list_url is not None:
         r = s.get(list_url)
@@ -53,6 +52,7 @@ if __name__ == "__main__":
                     print(f'would delete {v["id"]}')
                 else:
                     r = s.delete(
-                        'https://api.github.com/user/packages/container/{container}/versions/{v["id"]}')
+                        'https://api.github.com/user/packages/'
+                        f'container/{container}/versions/{v["id"]}')
                     r.raise_for_status()
                     print(f'deleted {v["id"]}')
