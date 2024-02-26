@@ -41,7 +41,7 @@ if __name__ == "__main__":
         versions = r.json()
         print(r.json())
         for v in versions:
-            created = datetime.fromisoformat(int(v['created_at']))
+            created = datetime.fromisoformat(v['created_at'])
             metadata = v["metadata"]["container"]
             print(f'{v["id"]}\t{v["name"]}\t{created}\t{metadata["tags"]}')
 
@@ -52,7 +52,6 @@ if __name__ == "__main__":
                     print(f'would delete {v["id"]}')
                 else:
                     r = s.delete(
-                        'https://api.github.com/user/packages/'
-                        f'container/{container}/versions/{v["id"]}')
+                        'https://api.github.com/user/packages/container/{container}/versions/{v["id"]}')
                     r.raise_for_status()
                     print(f'deleted {v["id"]}')
