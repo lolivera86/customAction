@@ -53,7 +53,6 @@ if __name__ == "__main__":
                     print(f'would delete {v["id"]}')
                 else:
                     r = s.delete(
-                        'https://api.github.com/user/packages/'
-                        f'container/{container}/versions/{v["id"]}')
+                        'https://api.github.com/user/packages/container/{container}/versions/{v["id"]}')
                     r.raise_for_status()
                     print(f'deleted {v["id"]}')
