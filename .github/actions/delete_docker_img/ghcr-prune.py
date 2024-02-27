@@ -44,7 +44,7 @@ if __name__ == "__main__":
  
         versions = r.json()
         # Sort versions by created_at in ascending order
-        versions = sorted(versions, key=lambda v: v['created_at'])
+        versions = sorted(versions, key=lambda v: v['created_at'], reverse=True)
         print(r.json())
         print(f'Total number of images retrieved: {len(versions)}')
        
