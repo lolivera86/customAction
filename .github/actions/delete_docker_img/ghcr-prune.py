@@ -30,13 +30,14 @@ if __name__ == "__main__":
         print(f'Pruning images created before {del_before}')
 
     list_url: str | None = 'https://api.github.com/user/packages/container/customaction/versions'
-    print("this is the container: ", container)
+ 
     image_count = 0   
-    print(f'this is the url : {list_url}')
+
     while list_url is not None:
         r = s.get(list_url)
         if 'link' in r.headers and 'next' in r.links:
             list_url = r.links['next']['url']
+             print(f'this is the url : {r.links['next']['url']}')
         else:
             list_url = None
 
@@ -44,7 +45,7 @@ if __name__ == "__main__":
         print(r.json())
         image_count += len(versions)
         print(f'Total number of images retrieved: {image_count}')
-   
+       
         for v in versions:
             created = datetime.fromisoformat(v['created_at'])
             metadata = v["metadata"]["container"]
@@ -59,7 +60,6 @@ if __name__ == "__main__":
                     try:                       
                         r = s.delete(url)
                         r.raise_for_status()
-                        deleted_count += 1
                     except r.exceptions.HTTPError as err:
                         print(err)
                   
