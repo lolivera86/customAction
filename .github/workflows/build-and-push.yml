@@ -10,7 +10,7 @@ on:
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: lolivera86/customaction
-  IMAGE_TAG: 1.0.${{ github.run_number }}
+  IMAGE_TAG: ${{ github.run_number }}
 
 jobs:
   build_and_push:
@@ -42,7 +42,8 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}:latest
+          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
+  
 
       - name: delete old images
         uses: ./.github/actions/delete_docker_img
