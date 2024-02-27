@@ -41,11 +41,10 @@ if __name__ == "__main__":
         else:
             list_url = None
         
-        print(f'this is the url : {r.links['next']['url']}')
+ 
         versions = r.json()
         print(r.json())
-        image_count += len(versions)
-        print(f'Total number of images retrieved: {image_count}')
+        print(f'Total number of images retrieved: {len(versions)}')
        
         for v in versions:
             created = datetime.fromisoformat(v['created_at'])
