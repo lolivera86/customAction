@@ -60,6 +60,7 @@ if __name__ == "__main__":
                     try:                       
                         r = s.delete(url)
                         r.raise_for_status()
+                        print(f'deleted {v["id"]}')
                     except r.exceptions.HTTPError as err:
                         print(err)
                   
