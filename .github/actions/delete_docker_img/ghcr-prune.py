@@ -30,6 +30,7 @@ if __name__ == "__main__":
         print(f'Pruning images created before {del_before}')
 
     list_url: str | None = 'https://api.github.com/user/packages/container/customaction/versions'
+    print("this is the container: ", container)
 
     while list_url is not None:
         r = s.get(list_url)
