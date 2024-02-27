@@ -24,7 +24,7 @@ if __name__ == "__main__":
                       'Accept': github_api_accept,
                       'X-GitHub-Api-Version': github_api_version})
 
-    del_before = datetime.now().astimezone() - timedelta(days=prune_age) \
+    del_before = datetime.now().astimezone() \
         if prune_age is not None else None
     if del_before:
         print(f'Pruning images created before {del_before}')
