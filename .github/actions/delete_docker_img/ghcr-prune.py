@@ -37,7 +37,7 @@ if __name__ == "__main__":
         r = s.get(list_url)
         if 'link' in r.headers and 'next' in r.links:
             list_url = r.links['next']['url']
-             print(f'this is the url : {r.links['next']['url']}')
+            print(f'this is the url : {r.links['next']['url']}')
         else:
             list_url = None
 
