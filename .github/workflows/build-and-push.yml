@@ -48,6 +48,6 @@ jobs:
         uses: ./.github/actions/delete_docker_img
         with:
           container: customaction
-          prune-age: 1
+          prune-age: 0
           dry-run: false
           github-token: ${{ secrets.GITHUB_TOKEN }}
