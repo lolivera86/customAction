@@ -52,7 +52,8 @@ if __name__ == "__main__":
             print(f'{v["id"]}\t{v["name"]}\t{created}\t{metadata["tags"]}')
 
             # prune old  images if requested
-            if del_before is not None and created < del_before:
+            if del_before is not None and created < del_before \
+            and len(metadata['tags']) == 0:
                 if dry_run:
                     print(f'would delete {v["id"]}')
                 else:
