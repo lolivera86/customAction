@@ -54,4 +54,6 @@ if __name__ == "__main__":
                     url = 'https://api.github.com/user/packages/container/{}/versions/{}'.format(container, v["id"])
                     r = s.delete(url)
                     r.raise_for_status()
+                    except r.exceptions.HTTPError as err:
+                        print(err)
                     print(f'deleted {v["id"]}')
