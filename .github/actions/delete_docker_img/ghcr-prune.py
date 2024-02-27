@@ -17,7 +17,7 @@ if __name__ == "__main__":
     token = os.environ['INPUT_GITHUB-TOKEN']
     
     if token is None:
-        raise ValueError('missing authentication token')
+        raise ValueError(' missing authentication token')
 
     s = requests.Session()
     s.headers.update({'Authorization': f'token {token}',
