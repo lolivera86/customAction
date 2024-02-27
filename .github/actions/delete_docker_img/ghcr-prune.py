@@ -32,6 +32,7 @@ if __name__ == "__main__":
     list_url: str | None = 'https://api.github.com/user/packages/container/customaction/versions'
     print("this is the container: ", container)
     image_count = 0   
+    print(f'this is the url : {list_url}')
     while list_url is not None:
         r = s.get(list_url)
         if 'link' in r.headers and 'next' in r.links:
@@ -43,7 +44,7 @@ if __name__ == "__main__":
         print(r.json())
         image_count += len(versions)
         print(f'Total number of images retrieved: {image_count}')
-        deleted_count = 0 
+   
         for v in versions:
             created = datetime.fromisoformat(v['created_at'])
             metadata = v["metadata"]["container"]
@@ -61,6 +62,6 @@ if __name__ == "__main__":
                         deleted_count += 1
                     except r.exceptions.HTTPError as err:
                         print(err)
-                    print(f'deleted {v["id"]}')
+                  
 
-        print(f'Total number of images deleted: {deleted_count}')            
+        
