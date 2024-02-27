@@ -24,7 +24,7 @@ if __name__ == "__main__":
                       'Accept': github_api_accept,
                       'X-GitHub-Api-Version': github_api_version})
 
-    del_before = datetime.now().astimezone() \
+    del_before = datetime.now().astimezone() - timedelta(days=prune_age) \
         if prune_age is not None else None
     if del_before:
         print(f'Pruning images created before {del_before}')
@@ -43,6 +43,8 @@ if __name__ == "__main__":
         
  
         versions = r.json()
+        # Sort versions by created_at in ascending order
+        versions = sorted(versions, key=lambda v: v['created_at'])
         print(r.json())
         print(f'Total number of images retrieved: {len(versions)}')
        
