@@ -41,6 +41,9 @@ if __name__ == "__main__":
 
         versions = r.json()
         print(r.json())
+        image_count += len(versions)
+        print(f'Total number of images retrieved: {image_count}')
+        deleted_count = 0 
         for v in versions:
             created = datetime.fromisoformat(v['created_at'])
             metadata = v["metadata"]["container"]
@@ -55,6 +58,9 @@ if __name__ == "__main__":
                     try:                       
                         r = s.delete(url)
                         r.raise_for_status()
+                        deleted_count += 1
                     except r.exceptions.HTTPError as err:
                         print(err)
                     print(f'deleted {v["id"]}')
+
+        print(f'Total number of images deleted: {deleted_count}')            
