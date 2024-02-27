@@ -24,7 +24,7 @@ if __name__ == "__main__":
                       'Accept': github_api_accept,
                       'X-GitHub-Api-Version': github_api_version})
 
-    del_before = datetime.now().astimezone() \
+    del_before = datetime.now().astimezone() - timedelta(days=prune_age) \
         if prune_age is not None else None
     if del_before:
         print(f'Pruning images created before {del_before}')
@@ -60,7 +60,7 @@ if __name__ == "__main__":
                     try:                       
                         r = s.delete(url)
                         r.raise_for_status()
-                        print(f'deleted {v["id"]}')
+                        time.sleep(1)
                     except r.exceptions.HTTPError as err:
                         print(err)
                   
