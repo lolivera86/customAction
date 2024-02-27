@@ -31,7 +31,7 @@ if __name__ == "__main__":
 
     list_url: str | None = 'https://api.github.com/user/packages/container/customaction/versions'
     print("this is the container: ", container)
-
+    image_count = 0   
     while list_url is not None:
         r = s.get(list_url)
         if 'link' in r.headers and 'next' in r.links:
