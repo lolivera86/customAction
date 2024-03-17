@@ -55,10 +55,10 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Notify Microsoft Teams about failure
-        if: ${{ steps.delete-old.conclusion != 'success'}}
+        if: ${{ steps.delete-old.conclusion == 'success'}}
         uses: lolivera86/notify-teams/notify-teams@v1
         with:
-          title: FMS COOP - Delete old images
-          summary: FMS-COOP deleting old images is a failure because of failed job delete-docker-image
-          text: FMS-COOP deleting old images is a failure because of failed job delete-docker-image
-          teams-webhook-url: ${{ secrets.TEAMS_WEBHOOK_URL }}
+          title:  Delete old images
+          summary: deleting old images is a failure because of failed job delete-docker-image
+          text: deleting old images is a failure because of failed job delete-docker-image
+          teams-webhook-url: https://learn.microsoft.com/outlook/actionable-messages
